@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinyAlly: First-Time Homebuyer Education & Prep Platform</title>
+    <meta name="description" content="Master homebuying with FinyAlly's step-by-step guide. Learn pre-approval, budgeting, credit basics & document prep. Free education for first-time buyers ready to own their dream home.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#009620',
+                        'primary-dark': '#007a1a',
+                        'primary-light': '#00b826',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #009620 0%, #00b826 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-gradient { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%); }
+        .glass-effect { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="glass-effect shadow-lg fixed w-full z-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold text-primary flex items-center">
+                    <span class="mr-2">🏡</span> FinyAlly
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition font-medium">Home</a>
+                    <a href="for-lenders.html" class="text-gray-700 hover:text-primary transition font-medium">For Lenders</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary transition font-medium">About</a>
+                    <a href="#signup" class="bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-lg transition font-semibold shadow-md hover:shadow-lg">Get Started</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="index.html" class="block py-2 text-gray-700 hover:text-primary font-medium">Home</a>
+                <a href="for-lenders.html" class="block py-2 text-gray-700 hover:text-primary font-medium">For Lenders</a>
+                <a href="about.html" class="block py-2 text-gray-700 hover:text-primary font-medium">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-24 hero-gradient">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0">
+                    <div class="inline-block bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                        🚀 FinTech × Real Estate Innovation
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
+                        Master Homebuying <span class="gradient-text">Before You Ever Talk to a Lender</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">The gamified platform that prepares millennial homebuyers with the knowledge, documents, and confidence to buy their first home—without the overwhelm.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-10">
+                        <a href="#signup" class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl text-lg font-bold text-center transition shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5">
+                            Start Learning Free <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="for-lenders.html" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-xl text-lg font-bold text-center transition">
+                            Lender Partnerships
+                        </a>
+                    </div>
+                    <div class="flex flex-wrap gap-6">
+                        <div class="flex items-center text-gray-700">
+                            <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-lock text-primary"></i>
+                            </div>
+                            <span class="font-medium">Free Forever</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-mobile-alt text-primary"></i>
+                            </div>
+                            <span class="font-medium">Mobile-First</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-shield-alt text-primary"></i>
+                            </div>
+                            <span class="font-medium">Expert-Backed</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 lg:pl-16">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-primary to-primary-light rounded-3xl opacity-20 blur-2xl"></div>
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" alt="Happy homebuyers" class="relative rounded-2xl shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="py-12 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-black text-primary-light mb-2">100%</div>
+                    <div class="text-sm text-gray-300">Free Education</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black text-primary-light mb-2">3</div>
+                    <div class="text-sm text-gray-300">Learning Levels</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black text-primary-light mb-2">2-4hrs</div>
+                    <div class="text-sm text-gray-300">To Complete</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black text-primary-light mb-2">$30K+</div>
+                    <div class="text-sm text-gray-300">Avg. Saved</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-black mb-6">Buying Your First Home <span class="text-red-600">Shouldn't Feel This Hard</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Most first-time buyers learn by making expensive mistakes. <strong class="text-primary">FinyAlly teaches you before you spend a dollar.</strong></p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-gray-50 rounded-2xl p-8 border-2 border-gray-200 hover:border-primary transition">
+                    <div class="text-6xl mb-6">😰</div>
+                    <h3 class="text-2xl font-bold mb-4">Overwhelmed</h3>
+                    <p class="text-gray-600 leading-relaxed">You don't know where to start. Lenders use confusing jargon. Google gives you 47 different answers.</p>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-8 border-2 border-gray-200 hover:border-primary transition">
+                    <div class="text-6xl mb-6">💸</div>
+                    <h3 class="text-2xl font-bold mb-4">Underprepared</h3>
+                    <p class="text-gray-600 leading-relaxed">You show up missing critical documents or with a credit score that costs you thousands in higher rates.</p>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-8 border-2 border-gray-200 hover:border-primary transition">
+                    <div class="text-6xl mb-6">🤷</div>
+                    <h3 class="text-2xl font-bold mb-4">Uninformed</h3>
+                    <p class="text-gray-600 leading-relaxed">You don't know what you don't know. Hidden costs and budget miscalculations derail your dream.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-24 bg-gradient-to-br from-gray-50 to-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-black mb-6">The <span class="gradient-text">FinyAlly Solution</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">FinyAlly guides you through every step—from documents to budget—so you approach lenders informed, confident, and ready.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="text-3xl">📚</span>
+                    </div>
+                    <div class="text-sm font-bold text-primary mb-2">LEVEL 1</div>
+                    <h3 class="text-2xl font-bold mb-4">Document Prep & Lending Basics</h3>
+                    <p class="text-gray-600 leading-relaxed">Learn what documents you need (W2 vs. Self-Employed), understand loan types, and master what lenders look for.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="text-3xl">💰</span>
+                    </div>
+                    <div class="text-sm font-bold text-primary mb-2">LEVEL 2</div>
+                    <h3 class="text-2xl font-bold mb-4">Pre-Approval & Budget Mastery</h3>
+                    <p class="text-gray-600 leading-relaxed">Master credit scores, down payment myths, real costs of homeownership, and get pre-approved with confidence.</p>
+                </div>
+                <div class="bg-gradient-to-br from-primary to-primary-light rounded-2xl shadow-xl p-8 text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
+                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="text-3xl">🏠</span>
+                    </div>
+                    <div class="text-sm font-bold mb-2">LEVEL 3</div>
+                    <h3 class="text-2xl font-bold mb-4">House Hunting & Offers</h3>
+                    <p class="leading-relaxed mb-4">Find the right agent, evaluate homes, make competitive offers, and navigate contingencies.</p>
+                    <span class="inline-block bg-white text-primary text-sm font-bold px-4 py-2 rounded-full">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Master -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-black mb-6">What You'll <span class="gradient-text">Master</span></h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-file-alt text-primary text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Documents Ready</h4>
+                        <p class="text-sm text-gray-600">Complete checklist for your employment type</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-chart-line text-primary text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Credit Smart</h4>
+                        <p class="text-sm text-gray-600">100 points = $30K+ savings difference</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-piggy-bank text-primary text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Down Payment Truth</h4>
+                        <p class="text-sm text-gray-600">Learn 3%, 3.5%, 0% down options</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-calculator text-primary text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Hidden Costs</h4>
+                        <p class="text-sm text-gray-600">Budget for taxes, insurance, PMI, maintenance</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-check-circle text-primary text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Pre-Approval Ready</h4>
+                        <p class="text-sm text-gray-600">Timeline and mistakes to avoid</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-search-dollar text-primary text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Lender Evaluation</h4>
+                        <p class="text-sm text-gray-600">Understand the 4 C's criteria</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-university text-primary text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Loan Types</h4>
+                        <p class="text-sm text-gray-600">Decode Conventional, FHA, VA, USDA</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-rocket text-primary text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Confident Approach</h4>
+                        <p class="text-sm text-gray-600">Show up prepared, not guessing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-black mb-6">Trusted by <span class="gradient-text">Future Homeowners</span></h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">S</div>
+                        <div class="ml-4">
+                            <div class="font-bold text-lg">Sarah M.</div>
+                            <div class="text-sm text-gray-500">Atlanta, GA</div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">"I had no idea I needed so many documents! FinyAlly's checklist saved me weeks of back-and-forth with my lender. I showed up fully prepared and got approved in 3 days."</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">M</div>
+                        <div class="ml-4">
+                            <div class="font-bold text-lg">Marcus T.</div>
+                            <div class="text-sm text-gray-500">Austin, TX</div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">"As a self-employed freelancer, I thought buying a home was impossible. FinyAlly showed me exactly what lenders need to see. I closed on my condo last month!"</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">J</div>
+                        <div class="ml-4">
+                            <div class="font-bold text-lg">Jessica L.</div>
+                            <div class="text-sm text-gray-500">Portland, OR</div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">"I thought I needed 20% down and almost gave up. FinyAlly taught me about 3% down options and I'm now in escrow on my dream home!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="signup" class="py-24 bg-gradient-to-br from-primary to-primary-dark text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -ml-48 -mt-48"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full -mr-48 -mb-48"></div>
+        </div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl lg:text-5xl font-black mb-6">Ready to Stop Guessing and Start Preparing?</h2>
+            <p class="text-xl mb-10 max-w-2xl mx-auto opacity-90">Join FinyAlly free today and take the first step toward confident, informed homeownership.</p>
+            <a href="#" class="inline-block bg-white text-primary hover:bg-gray-100 px-12 py-5 rounded-xl text-lg font-bold transition shadow-2xl transform hover:scale-105">
+                Get Started Free <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+            <div class="mt-10 flex flex-wrap justify-center gap-8">
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-2xl mr-3"></i>
+                    <span class="font-medium">No credit card required</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-2xl mr-3"></i>
+                    <span class="font-medium">100% free education</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-2xl mr-3"></i>
+                    <span class="font-medium">Privacy protected</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <span class="mr-2">🏡</span> FinyAlly
+                    </div>
+                    <p class="text-sm leading-relaxed">Empowering first-time homebuyers with the knowledge to succeed.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Product</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="about.html" class="hover:text-primary transition">About Us</a></li>
+                        <li><a href="about.html#faq" class="hover:text-primary transition">FAQ</a></li>
+                        <li><a href="about.html#contact" class="hover:text-primary transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Partners</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="for-lenders.html" class="hover:text-primary transition">For Lenders</a></li>
+                        <li><a href="mailto:partnerships@finyally.tech" class="hover:text-primary transition">Partner Inquiry</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                    <a href="mailto:support@finyally.tech" class="text-sm hover:text-primary transition">support@finyally.tech</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2025 FinyAlly. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-primary transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
