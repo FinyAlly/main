@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About FinyAlly | Mission & Contact</title>
+    <meta name="description" content="Learn about FinyAlly's mission to empower first-time homebuyers with knowledge and confidence. Contact us for support or partnership inquiries.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#009620',
+                        'primary-dark': '#007a1a',
+                        'primary-light': '#00b826',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #009620 0%, #00b826 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-effect { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="glass-effect shadow-lg fixed w-full z-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold text-primary flex items-center">
+                    <span class="mr-2">🏡</span> FinyAlly
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition font-medium">Home</a>
+                    <a href="for-lenders.html" class="text-gray-700 hover:text-primary transition font-medium">For Lenders</a>
+                    <a href="about.html" class="text-primary transition font-medium border-b-2 border-primary">About</a>
+                    <a href="index.html#signup" class="bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-lg transition font-semibold shadow-md hover:shadow-lg">Get Started</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="index.html" class="block py-2 text-gray-700 hover:text-primary font-medium">Home</a>
+                <a href="for-lenders.html" class="block py-2 text-gray-700 hover:text-primary font-medium">For Lenders</a>
+                <a href="about.html" class="block py-2 text-primary font-medium">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-green-50 to-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl lg:text-6xl font-black mb-6 leading-tight">
+                    Why <span class="gradient-text">FinyAlly Exists</span>
+                </h1>
+                <p class="text-2xl text-gray-600 leading-relaxed">The homebuying process is broken. We're fixing it—one educated millennial at a time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Story -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-16">
+                    <h2 class="text-4xl font-black mb-8">The Problem</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">Every year, millions of first-time homebuyers enter the market unprepared. They don't know what documents lenders need, underestimate the impact of their credit score, believe myths about down payments, and get surprised by hidden costs.</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6"><strong class="text-primary">The result?</strong> Delayed closings, denied loans, financial stress, and thousands of dollars in avoidable mistakes.</p>
+                    <p class="text-lg text-gray-700 leading-relaxed"><strong class="text-primary">The existing "solutions"?</strong> Google searches return conflicting advice. Lenders educate borrowers after they've applied (too late). Real estate agents focus on selling, not educating. Expensive homebuying courses cost $200+ and aren't mobile-friendly.</p>
+                </div>
+
+                <div class="mb-16 p-10 bg-primary bg-opacity-5 border-l-4 border-primary rounded-r-2xl">
+                    <h3 class="text-3xl font-bold mb-4 text-primary">The Gap</h3>
+                    <p class="text-xl text-gray-800 leading-relaxed">Nobody was educating millennials BEFORE they ever talked to a lender—in a format that fit their lives.</p>
+                </div>
+
+                <div>
+                    <h2 class="text-4xl font-black mb-8">The Solution: FinyAlly</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">FinyAlly was born from a simple belief: <strong class="text-primary">Homebuyers deserve to be educated before they make the biggest financial decision of their lives.</strong></p>
+                    <p class="text-lg text-gray-700 leading-relaxed">We're a free, mobile-first, gamified education platform that breaks down the complex homebuying process into digestible steps, provides checklists and actionable guidance, tailors content to different employment types, speaks plain English (not mortgage jargon), and empowers buyers to show up to lenders confident, prepared, and informed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-black mb-6">Our <span class="gradient-text">Mission</span></h2>
+                    <p class="text-2xl text-gray-800 font-medium leading-relaxed">"To eliminate the knowledge gap that costs first-time homebuyers thousands in preventable mistakes."</p>
+                </div>
+
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-center mb-12">We Believe</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-xl shadow-lg p-8 flex items-start space-x-4">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-book text-primary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Education Should Be Free</h4>
+                                <p class="text-gray-600">Quality financial education shouldn't have a price tag.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-lg p-8 flex items-start space-x-4">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-shield-alt text-primary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Preparation Beats Reaction</h4>
+                                <p class="text-gray-600">Being proactive prevents costly mistakes.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-lg p-8 flex items-start space-x-4">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-brain text-primary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Informed Buyers Win</h4>
+                                <p class="text-gray-600">Knowledge empowers better financial decisions.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-lg p-8 flex items-start space-x-4">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-handshake text-primary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Everyone Benefits</h4>
+                                <p class="text-gray-600">Lenders and buyers both win when everyone's educated.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-lg p-8 flex items-start space-x-4">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-home text-primary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Homeownership Is Achievable</h4>
+                                <p class="text-gray-600">It should feel empowering, not intimidating.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-lg p-8 flex items-start space-x-4">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-users text-primary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Community Over Competition</h4>
+                                <p class="text-gray-600">We're building a movement of informed buyers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl lg:text-5xl font-black text-center mb-16">Frequently Asked <span class="gradient-text">Questions</span></h2>
+                
+                <div class="space-y-6">
+                    <!-- FAQ 1 -->
+                    <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border-2 border-gray-200 hover:border-primary transition">
+                        <h3 class="text-xl font-bold mb-4 flex items-start">
+                            <span class="text-primary mr-3">Q:</span>
+                            <span>What is FinyAlly?</span>
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed pl-8">FinyAlly is a free, mobile-first education platform that prepares first-time homebuyers for the entire homebuying process. We provide step-by-step guidance on document preparation, lending basics, credit management, budgeting, and pre-approval—all before you ever talk to a lender. Our gamified learning experience makes complex topics easy to understand and apply.</p>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border-2 border-gray-200 hover:border-primary transition">
+                        <h3 class="text-xl font-bold mb-4 flex items-start">
+                            <span class="text-primary mr-3">Q:</span>
+                            <span>How does FinyAlly work?</span>
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed pl-8">FinyAlly guides you through 3 levels of homebuying education. You choose your path (W2 or Self-Employed), complete bite-sized lessons and quizzes at your own pace, and track your progress as you level up. Each level teaches critical skills—from document checklists to credit basics to pre-approval readiness. Your progress is saved, so you can learn on your schedule, anywhere on your mobile device.</p>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border-2 border-gray-200 hover:border-primary transition">
+                        <h3 class="text-xl font-bold mb-4 flex items-start">
+                            <span class="text-primary mr-3">Q:</span>
+                            <span>Is FinyAlly really 100% free?</span>
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed pl-8">Yes! FinyAlly is completely free to use. No credit card required, no hidden fees, no paywalls, and no upsells. Our mission is to make quality homebuyer education accessible to everyone. We believe financial literacy shouldn't cost money.</p>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border-2 border-gray-200 hover:border-primary transition">
+                        <h3 class="text-xl font-bold mb-4 flex items-start">
+                            <span class="text-primary mr-3">Q:</span>
+                            <span>Who should use FinyAlly?</span>
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed pl-8">FinyAlly is designed for first-time homebuyers—especially millennials—who want to approach the homebuying process informed and prepared. Whether you're W2 employed, self-employed, freelancing, or in the gig economy, FinyAlly has tailored content for your situation. If you're thinking about buying a home in the next 6-12 months, start with FinyAlly now.</p>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border-2 border-gray-200 hover:border-primary transition">
+                        <h3 class="text-xl font-bold mb-4 flex items-start">
+                            <span class="text-primary mr-3">Q:</span>
+                            <span>How long does it take to complete FinyAlly?</span>
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed pl-8">Most users complete Levels 1 and 2 in 2-4 hours total. You can work through the content at your own pace—complete it all in one sitting or spread it over several days. Your progress is automatically saved, so you can pick up exactly where you left off anytime.</p>
+                    </div>
+
+                    <!-- FAQ 6 -->
+                    <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border-2 border-gray-200 hover:border-primary transition">
+                        <h3 class="text-xl font-bold mb-4 flex items-start">
+                            <span class="text-primary mr-3">Q:</span>
+                            <span>Do I need to download an app?</span>
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed pl-8">No download required! FinyAlly is a web-based platform optimized for mobile devices. Simply access it from any browser on your phone, tablet, or computer. A dedicated mobile app is coming soon, but for now, the mobile web experience is seamless and fully functional.</p>
+                    </div>
+
+                    <!-- FAQ 7 -->
+                    <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border-2 border-gray-200 hover:border-primary transition">
+                        <h3 class="text-xl font-bold mb-4 flex items-start">
+                            <span class="text-primary mr-3">Q:</span>
+                            <span>Does FinyAlly provide mortgages or connect me with lenders?</span>
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed pl-8">No, FinyAlly is an educational platform, not a lender or loan broker. We prepare you with the knowledge and documents you need before you approach lenders. Once you complete our program, you'll be ready to confidently shop for lenders, compare offers, and get pre-approved. We do partner with select mission-aligned lenders who can be featured in our directory (coming soon).</p>
+                    </div>
+
+                    <!-- FAQ 8 -->
+                    <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border-2 border-gray-200 hover:border-primary transition">
+                        <h3 class="text-xl font-bold mb-4 flex items-start">
+                            <span class="text-primary mr-3">Q:</span>
+                            <span>What makes FinyAlly different from YouTube videos or Google searches?</span>
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed pl-8">Unlike scattered YouTube videos or overwhelming Google searches, FinyAlly provides a structured, step-by-step curriculum specifically designed for first-time buyers. We eliminate conflicting advice, break complex topics into digestible lessons, tailor content to your employment type (W2 vs. Self-Employed), and track your progress. Plus, our gamified approach keeps you engaged and motivated—no boring 3-hour webinars.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl lg:text-5xl font-black text-center mb-16">Get in <span class="gradient-text">Touch</span></h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- For Homebuyers -->
+                    <div class="bg-white rounded-2xl shadow-xl p-10">
+                        <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-user text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">For Homebuyers</h3>
+                        <p class="text-gray-600 mb-6">Have questions about using FinyAlly? Need support? We're here to help.</p>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-envelope text-primary mt-1"></i>
+                                <div>
+                                    <div class="font-semibold text-sm text-gray-500 mb-1">Email</div>
+                                    <a href="mailto:support@finyally.tech" class="text-primary hover:text-primary-dark font-medium">support@finyally.tech</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-clock text-primary mt-1"></i>
+                                <div>
+                                    <div class="font-semibold text-sm text-gray-500 mb-1">Response Time</div>
+                                    <div class="text-gray-700">Within 24-48 hours</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-primary bg-opacity-5 rounded-xl">
+                            <div class="font-bold text-sm mb-2">Email Subject Format:</div>
+                            <code class="text-sm text-gray-700">FinyAlly - [Your Question/Issue]</code>
+                        </div>
+                    </div>
+
+                    <!-- For Lenders -->
+                    <div class="bg-gradient-to-br from-primary to-primary-dark rounded-2xl shadow-xl p-10 text-white">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-handshake text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">For Lenders & Partners</h3>
+                        <p class="mb-6 opacity-90">Interested in partnering with FinyAlly? Let's discuss how we can work together.</p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-envelope mt-1"></i>
+                                <div>
+                                    <div class="font-semibold text-sm mb-1 opacity-75">Email</div>
+                                    <a href="mailto:partnerships@finyally.tech" class="hover:opacity-75 font-medium transition">partnerships@finyally.tech</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-phone mt-1"></i>
+                                <div>
+                                    <div class="font-semibold text-sm mb-1 opacity-75">Phone</div>
+                                    <div class="opacity-90">(Coming Soon)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="for-lenders.html" class="block w-full bg-white text-primary hover:bg-gray-100 text-center py-3 rounded-lg font-bold transition">
+                            Learn About Partnerships <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Additional Resources -->
+                <div class="mt-16 text-center">
+                    <h3 class="text-2xl font-bold mb-6">Additional Resources</h3>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <a href="https://www.hud.gov/findacounselor" target="_blank" class="flex items-center space-x-2 text-primary hover:text-primary-dark transition">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>HUD Housing Counseling</span>
+                        </a>
+                        <a href="https://www.annualcreditreport.com" target="_blank" class="flex items-center space-x-2 text-primary hover:text-primary-dark transition">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>Free Credit Reports</span>
+                        </a>
+                        <a href="https://www.consumerfinance.gov/owning-a-home/" target="_blank" class="flex items-center space-x-2 text-primary hover:text-primary-dark transition">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>CFPB Homebuying Tools</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-gradient-to-br from-primary to-primary-dark text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl lg:text-5xl font-black mb-6">Ready to Master Homebuying?</h2>
+            <p class="text-xl mb-10 max-w-2xl mx-auto opacity-90">Join thousands of millennials preparing to buy their first home with confidence.</p>
+            <a href="index.html#signup" class="inline-block bg-white text-primary hover:bg-gray-100 px-12 py-5 rounded-xl text-lg font-bold transition shadow-2xl transform hover:scale-105">
+                Get Started Free <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <span class="mr-2">🏡</span> FinyAlly
+                    </div>
+                    <p class="text-sm leading-relaxed">Empowering first-time homebuyers with the knowledge to succeed.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Product</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="about.html" class="hover:text-primary transition">About Us</a></li>
+                        <li><a href="about.html#faq" class="hover:text-primary transition">FAQ</a></li>
+                        <li><a href="about.html#contact" class="hover:text-primary transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Partners</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="for-lenders.html" class="hover:text-primary transition">For Lenders</a></li>
+                        <li><a href="mailto:partnerships@finyally.tech" class="hover:text-primary transition">Partner Inquiry</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                    <a href="mailto:support@finyally.tech" class="text-sm hover:text-primary transition">support@finyally.tech</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2025 FinyAlly. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-primary transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
