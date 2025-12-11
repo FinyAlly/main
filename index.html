@@ -46,8 +46,16 @@
         }
 
         .logo img {
-            height: 32px;
+            height: 40px;
             width: auto;
+            display: block;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #009620;
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
@@ -70,7 +78,7 @@
 
         .nav-cta {
             background: #009620;
-            color: white;
+            color: white !important;
             padding: 10px 24px;
             border-radius: 8px;
             font-weight: 600;
@@ -81,14 +89,14 @@
         .nav-cta:hover {
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(0, 150, 32, 0.3);
-            color: white;
+            color: white !important;
         }
 
         /* Hero Section */
         .hero {
             margin-top: 80px;
             padding: 120px 40px 80px;
-            background: #ffffff;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9f4 100%);
             text-align: center;
         }
 
@@ -122,17 +130,19 @@
             display: inline-block;
             background: #009620;
             color: white;
-            padding: 16px 40px;
+            padding: 18px 48px;
             border-radius: 8px;
             font-size: 17px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0, 150, 32, 0.3);
         }
 
         .cta-primary:hover {
             background: #007a1a;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 150, 32, 0.4);
         }
 
         .trust-bar {
@@ -209,12 +219,30 @@
             padding: 40px;
             border-radius: 12px;
             border: 1px solid #e5e7eb;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: #009620;
+            transition: height 0.3s ease;
         }
 
         .problem-card:hover {
             border-color: #009620;
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 150, 32, 0.15);
+        }
+
+        .problem-card:hover::before {
+            height: 100%;
         }
 
         .problem-card h3 {
@@ -257,16 +285,18 @@
         .feature-image {
             width: 100%;
             height: 500px;
-            background: #f3f4f6;
+            background: linear-gradient(135deg, #f0f9f4 0%, #d1fae5 50%, #a7f3d0 100%);
             border-radius: 16px;
             overflow: hidden;
             position: relative;
+            box-shadow: 0 4px 20px rgba(0, 150, 32, 0.1);
         }
 
         .feature-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
         /* Placeholder for images */
@@ -374,7 +404,7 @@
             font-size: 48px;
             font-weight: 700;
             margin-bottom: 32px;
-            color: #111827;
+            color: #009620;
             letter-spacing: -0.02em;
         }
 
@@ -424,12 +454,10 @@
             margin-bottom: 32px;
             display: flex;
             justify-content: center;
-        }
-
-        .footer-logo img {
-            height: 28px;
-            width: auto;
-            opacity: 0.9;
+            font-size: 24px;
+            font-weight: 700;
+            color: #009620;
+            letter-spacing: -0.5px;
         }
 
         .footer-links {
@@ -522,7 +550,7 @@
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">
-                <img src="https://i.postimg.cc/L6qJNQXC/finyally-logo.png" alt="FinyAlly">
+                <span class="logo-text">FinyAlly</span>
             </a>
             <div class="nav-links">
                 <a href="#how-it-works">How It Works</a>
@@ -587,7 +615,22 @@
                 <p>FinyAlly breaks down complex mortgage concepts into 15-minute lessons that stick—so you know exactly what lenders want before you apply.</p>
             </div>
             <div class="feature-image">
-                <img src="https://images.unsplash.com/photo-1554224311-beee460c201f?q=80&w=2000" alt="Professional using laptop for financial planning">
+                <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#f0f9f4;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#d1fae5;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#a7f3d0;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="800" height="600" fill="url(#grad1)"/>
+                    <rect x="100" y="150" width="600" height="300" rx="20" fill="white" opacity="0.9"/>
+                    <rect x="150" y="200" width="200" height="40" rx="8" fill="#009620" opacity="0.3"/>
+                    <rect x="150" y="260" width="300" height="40" rx="8" fill="#009620" opacity="0.3"/>
+                    <rect x="150" y="320" width="250" height="40" rx="8" fill="#009620" opacity="0.3"/>
+                    <circle cx="550" cy="300" r="80" fill="#009620" opacity="0.2"/>
+                    <path d="M 520 300 L 545 325 L 590 270" stroke="#009620" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
         </div>
     </section>
@@ -596,7 +639,22 @@
     <section class="section" style="background: #f9fafb;">
         <div class="features-grid">
             <div class="feature-image">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000" alt="Data analytics dashboard">
+                <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#f0f9f4;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#d1fae5;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#a7f3d0;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="800" height="600" fill="url(#grad2)"/>
+                    <rect x="150" y="100" width="500" height="400" rx="20" fill="white" opacity="0.9"/>
+                    <rect x="200" y="150" width="400" height="60" rx="8" fill="#009620" opacity="0.2"/>
+                    <rect x="200" y="230" width="150" height="150" rx="12" fill="#009620" opacity="0.3"/>
+                    <rect x="370" y="230" width="230" height="70" rx="8" fill="#009620" opacity="0.25"/>
+                    <rect x="370" y="320" width="230" height="60" rx="8" fill="#009620" opacity="0.2"/>
+                    <circle cx="480" cy="460" r="30" fill="#009620" opacity="0.4"/>
+                </svg>
             </div>
             <div class="feature-content">
                 <h3>Track your mortgage readiness in real-time</h3>
@@ -615,7 +673,24 @@
                 <p>From credit optimization to document checklists, FinyAlly guides you step-by-step toward your dream home.</p>
             </div>
             <div class="feature-image">
-                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2000" alt="Strategic planning and roadmap">
+                <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#f0f9f4;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#d1fae5;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#a7f3d0;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="800" height="600" fill="url(#grad3)"/>
+                    <circle cx="250" cy="150" r="40" fill="#009620" opacity="0.3"/>
+                    <line x1="290" y1="150" x2="400" y2="250" stroke="#009620" stroke-width="4" opacity="0.4"/>
+                    <circle cx="400" cy="250" r="40" fill="#009620" opacity="0.3"/>
+                    <line x1="440" y1="250" x2="550" y2="350" stroke="#009620" stroke-width="4" opacity="0.4"/>
+                    <circle cx="550" cy="350" r="40" fill="#009620" opacity="0.3"/>
+                    <line x1="590" y1="350" x2="650" y2="450" stroke="#009620" stroke-width="4" opacity="0.4"/>
+                    <circle cx="650" cy="450" r="50" fill="#009620" opacity="0.5"/>
+                    <path d="M 630 450 L 645 470 L 680 430" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
         </div>
     </section>
@@ -674,9 +749,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">
-                <img src="https://i.postimg.cc/L6qJNQXC/finyally-logo.png" alt="FinyAlly">
-            </div>
+            <div class="footer-logo">FinyAlly</div>
             <div class="footer-links">
                 <a href="#how-it-works">How It Works</a>
                 <a href="#about">About</a>
