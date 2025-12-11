@@ -3,452 +3,690 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinyAlly: First-Time Homebuyer Education & Prep Platform</title>
-    <meta name="description" content="Master homebuying with FinyAlly's step-by-step guide. Learn pre-approval, budgeting, credit basics & document prep. Free education for first-time buyers ready to own their dream home.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#009620',
-                        'primary-dark': '#007a1a',
-                        'primary-light': '#00b826',
-                    }
-                }
+    <title>FinyAlly - Your Homebuying Study Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #009620;
+        }
+
+        .nav-cta {
+            background: #009620;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 150, 32, 0.3);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 120px 40px 80px;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 68px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #111827;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 .highlight {
+            color: #009620;
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: #6b7280;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: #009620;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .cta-primary:hover {
+            background: #007a1a;
+            transform: translateY(-1px);
+        }
+
+        .trust-bar {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 80px;
+            padding-top: 60px;
+            border-top: 1px solid #e5e7eb;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #111827;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .trust-label {
+            font-size: 15px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* Section Container */
+        .section {
+            padding: 120px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #111827;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: #f9fafb;
+            padding: 120px 40px;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.2s ease;
+        }
+
+        .problem-card:hover {
+            border-color: #009620;
+            transform: translateY(-2px);
+        }
+
+        .problem-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+
+        .problem-card p {
+            font-size: 16px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .feature-content h3 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #111827;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .feature-content p {
+            font-size: 18px;
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 500px;
+            background: #f3f4f6;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Placeholder for images */
+        .placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f0f9f4 0%, #d1fae5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #047857;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* How It Works */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-top: 80px;
+        }
+
+        .step {
+            text-align: left;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: #009620;
+            color: white;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .step h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+
+        .step p {
+            font-size: 16px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #111827;
+            padding: 120px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 52px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: #d1d5db;
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            background: #009620;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .cta-secondary:hover {
+            background: #007a1a;
+            transform: translateY(-1px);
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            padding: 120px 40px;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: #111827;
+            letter-spacing: -0.02em;
+        }
+
+        .about-content p {
+            font-size: 20px;
+            color: #4b5563;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .founder {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .founder-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .founder-title {
+            font-size: 16px;
+            color: #6b7280;
+        }
+
+        .about-cta {
+            margin-top: 48px;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: #9ca3af;
+            padding: 60px 40px 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-logo img {
+            height: 28px;
+            width: auto;
+            opacity: 0.9;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 15px;
+        }
+
+        .footer-links a:hover {
+            color: #009620;
+        }
+
+        .copyright {
+            font-size: 14px;
+            padding-top: 32px;
+            border-top: 1px solid #374151;
+            color: #6b7280;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .section-header h2 {
+                font-size: 36px;
+            }
+
+            .features-grid,
+            .problem-grid,
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .trust-bar {
+                gap: 40px;
+            }
+
+            .feature-image {
+                height: 400px;
             }
         }
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-text { background: linear-gradient(135deg, #009620 0%, #00b826 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-gradient { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%); }
-        .glass-effect { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 80px 20px 60px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section {
+                padding: 80px 20px;
+            }
+
+            .cta-section,
+            .problem-section,
+            .about-section {
+                padding: 80px 20px;
+            }
+
+            .feature-content h3 {
+                font-size: 32px;
+            }
+        }
     </style>
 </head>
-<body class="antialiased">
+<body>
     <!-- Navigation -->
-    <nav class="glass-effect shadow-lg fixed w-full z-50 border-b border-gray-100">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="index.html" class="text-2xl font-bold text-primary flex items-center">
-                    <span class="mr-2">🏡</span> FinyAlly
-                </a>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="text-gray-700 hover:text-primary transition font-medium">Home</a>
-                    <a href="about.html" class="text-gray-700 hover:text-primary transition font-medium">About</a>
-                    <a href="for-lenders.html" class="text-gray-700 hover:text-primary transition font-medium">For Lenders</a>
-                    <a href="https://finyally.flutterflow.app/" target="_blank" class="bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-lg transition font-semibold shadow-md hover:shadow-lg">First-Time Homebuyer? Save $30K by Clicking Here</a>
-                </div>
-                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-                <a href="index.html" class="block py-2 text-gray-700 hover:text-primary font-medium">Home</a>
-                <a href="about.html" class="block py-2 text-gray-700 hover:text-primary font-medium">About</a>
-                <a href="for-lenders.html" class="block py-2 text-gray-700 hover:text-primary font-medium">For Lenders</a>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="https://i.postimg.cc/L6qJNQXC/finyally-logo.png" alt="FinyAlly">
+            </a>
+            <div class="nav-links">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#about">About</a>
+                <a href="https://finyally.flutterflow.app/" class="nav-cta">Start Now</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-24 hero-gradient">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center">
-                <div class="lg:w-1/2 mb-12 lg:mb-0">
-                    <div class="inline-block bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                        🚀 FinTech × Real Estate Innovation
-                    </div>
-                    <h1 class="text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
-                        Ready to buy your first home? <span class="gradient-text">Start saving thousands</span> — we'll guide you step-by-step.
-                    </h1>
-                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">Master homebuying before you ever talk to a lender. FinyAlly's gamified platform prepares millennial buyers with the knowledge, documents, and confidence to purchase their first home — without being overwhelmed.</p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-10">
-                        <a href="https://finyally.flutterflow.app/" target="_blank" class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl text-lg font-bold text-center transition shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5">
-                            Save and Start for Free <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                        <a href="for-lenders.html" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-xl text-lg font-bold text-center transition">
-                            Lender Partnerships
-                        </a>
-                    </div>
-                    <div class="flex flex-wrap gap-6">
-                        <div class="flex items-center text-gray-700">
-                            <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-3">
-                                <i class="fas fa-lock text-primary"></i>
-                            </div>
-                            <span class="font-medium">Free Forever</span>
-                        </div>
-                        <div class="flex items-center text-gray-700">
-                            <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-3">
-                                <i class="fas fa-mobile-alt text-primary"></i>
-                            </div>
-                            <span class="font-medium">Mobile-First</span>
-                        </div>
-                        <div class="flex items-center text-gray-700">
-                            <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-3">
-                                <i class="fas fa-shield-alt text-primary"></i>
-                            </div>
-                            <span class="font-medium">Expert-Backed</span>
-                        </div>
-                    </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>You wouldn't take a $300K test blind. <span class="highlight">FinyAlly is your study guide.</span></h1>
+            <p>The gamified platform that prepares millennial homebuyers for mortgage approval—in just 15 minutes a day.</p>
+            <a href="https://finyally.flutterflow.app/" class="cta-primary">Start Preparing Now</a>
+            
+            <div class="trust-bar">
+                <div class="trust-item">
+                    <span class="trust-number">85%</span>
+                    <span class="trust-label">Higher Approval Rate</span>
                 </div>
-                <div class="lg:w-1/2 lg:pl-16">
-                    <div class="relative">
-                        <div class="absolute -inset-4 bg-gradient-to-r from-primary to-primary-light rounded-3xl opacity-20 blur-2xl"></div>
-                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" alt="Happy homebuyers" class="relative rounded-2xl shadow-2xl">
-                    </div>
+                <div class="trust-item">
+                    <span class="trust-number">15 min</span>
+                    <span class="trust-label">Daily Learning</span>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Bar -->
-    <section class="py-12 bg-gray-900 text-white">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <div class="text-4xl font-black text-primary-light mb-2">100%</div>
-                    <div class="text-sm text-gray-300">Free Education</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-black text-primary-light mb-2">3</div>
-                    <div class="text-sm text-gray-300">Learning Levels</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-black text-primary-light mb-2">15-30min</div>
-                    <div class="text-sm text-gray-300">To Complete</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-black text-primary-light mb-2">$30K+</div>
-                    <div class="text-sm text-gray-300">Avg. Saved</div>
+                <div class="trust-item">
+                    <span class="trust-number">75+</span>
+                    <span class="trust-label">Preparing Now</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Problem Section -->
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-black mb-6">Buying Your First Home <span class="text-red-600">Shouldn't Feel This Hard</span></h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Most first-time buyers learn by making expensive mistakes. <strong class="text-primary">FinyAlly teaches you before you spend a dollar.</strong></p>
+    <section class="problem-section">
+        <div class="section-header">
+            <h2>Why Qualified Millennials Get Denied</h2>
+            <p>It's not your credit score. It's not your savings. Here's what's really stopping you.</p>
+        </div>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <h3>Don't Understand Underwriting</h3>
+                <p>You don't know what lenders actually look for beyond credit scores—and nobody teaches you.</p>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="bg-gray-50 rounded-2xl p-8 border-2 border-gray-200 hover:border-primary transition">
-                    <div class="text-6xl mb-6">😰</div>
-                    <h3 class="text-2xl font-bold mb-4">Overwhelmed</h3>
-                    <p class="text-gray-600 leading-relaxed">You don't know where to start. Lenders use confusing jargon. Google gives you 47 different answers.</p>
-                </div>
-                <div class="bg-gray-50 rounded-2xl p-8 border-2 border-gray-200 hover:border-primary transition">
-                    <div class="text-6xl mb-6">💸</div>
-                    <h3 class="text-2xl font-bold mb-4">Underprepared</h3>
-                    <p class="text-gray-600 leading-relaxed">You show up missing critical documents or with a credit score that costs you thousands in higher rates.</p>
-                </div>
-                <div class="bg-gray-50 rounded-2xl p-8 border-2 border-gray-200 hover:border-primary transition">
-                    <div class="text-6xl mb-6">❓</div>
-                    <h3 class="text-2xl font-bold mb-4">Uninformed</h3>
-                    <p class="text-gray-600 leading-relaxed">You don't know what you don't know. Hidden costs and budget miscalculations derail your dream.</p>
-                </div>
+            <div class="problem-card">
+                <h3>Missing Documentation</h3>
+                <p>Incomplete paperwork causes instant rejections or delays that kill your deal.</p>
+            </div>
+            <div class="problem-card">
+                <h3>Poor Timing</h3>
+                <p>You apply too early or too late, missing ideal conditions or making costly mistakes.</p>
             </div>
         </div>
     </section>
 
-    <!-- Solution Section -->
-    <section class="py-24 bg-gradient-to-br from-gray-50 to-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-black mb-6">The <span class="gradient-text">FinyAlly Solution</span></h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">FinyAlly guides you through every step—from documents to budget—so you approach lenders informed, confident, and ready.</p>
+    <!-- Solution Feature 1 -->
+    <section class="section">
+        <div class="features-grid">
+            <div class="feature-content">
+                <h3>Master what underwriters actually evaluate</h3>
+                <p>Learn the real approval criteria through engaging quizzes designed for your schedule. No jargon. No confusion.</p>
+                <p>FinyAlly breaks down complex mortgage concepts into 15-minute lessons that stick—so you know exactly what lenders want before you apply.</p>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-2xl flex items-center justify-center mb-6">
-                        <span class="text-3xl">📚</span>
-                    </div>
-                    <div class="text-sm font-bold text-primary mb-2">LEVEL 1</div>
-                    <h3 class="text-2xl font-bold mb-4">Document Prep & Lending Basics</h3>
-                    <p class="text-gray-600 leading-relaxed">Learn what documents you need (W2 vs. Self-Employed), understand loan types, and master what lenders look for.</p>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-2xl flex items-center justify-center mb-6">
-                        <span class="text-3xl">💰</span>
-                    </div>
-                    <div class="text-sm font-bold text-primary mb-2">LEVEL 2</div>
-                    <h3 class="text-2xl font-bold mb-4">Pre-Approval & Budget Mastery</h3>
-                    <p class="text-gray-600 leading-relaxed">Master credit scores, down payment myths, real costs of homeownership, and get pre-approved with confidence.</p>
-                </div>
-                <div class="bg-gradient-to-br from-primary to-primary-light rounded-2xl shadow-xl p-8 text-white relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mb-6">
-                        <span class="text-3xl">🏠</span>
-                    </div>
-                    <div class="text-sm font-bold mb-2">LEVEL 3</div>
-                    <h3 class="text-2xl font-bold mb-4">House Hunting & Offers</h3>
-                    <p class="leading-relaxed mb-4">Find the right agent, evaluate homes, make competitive offers, and navigate contingencies.</p>
-                    <span class="inline-block bg-white text-primary text-sm font-bold px-4 py-2 rounded-full">Coming Soon</span>
-                </div>
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1554224311-beee460c201f?q=80&w=2000" alt="Professional using laptop for financial planning">
             </div>
         </div>
     </section>
 
-    <!-- What You'll Master -->
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-black mb-6">What You'll <span class="gradient-text">Master</span></h2>
+    <!-- Solution Feature 2 -->
+    <section class="section" style="background: #f9fafb;">
+        <div class="features-grid">
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000" alt="Data analytics dashboard">
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
-                    <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-file-alt text-primary text-xl"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-2">Documents Ready</h4>
-                        <p class="text-sm text-gray-600">Complete checklist for your employment type</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
-                    <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-chart-line text-primary text-xl"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-2">Credit Smart</h4>
-                        <p class="text-sm text-gray-600">100 points = $30K+ savings difference</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
-                    <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-piggy-bank text-primary text-xl"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-2">Down Payment Truth</h4>
-                        <p class="text-sm text-gray-600">Learn 3%, 3.5%, 0% down options</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
-                    <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-calculator text-primary text-xl"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-2">Hidden Costs</h4>
-                        <p class="text-sm text-gray-600">Budget for taxes, insurance, PMI, maintenance</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
-                    <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-check-circle text-primary text-xl"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-2">Pre-Approval Ready</h4>
-                        <p class="text-sm text-gray-600">Timeline and mistakes to avoid</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
-                    <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-search-dollar text-primary text-xl"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-2">Lender Evaluation</h4>
-                        <p class="text-sm text-gray-600">Understand the 4 C's criteria</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
-                    <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-university text-primary text-xl"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-2">Loan Types</h4>
-                        <p class="text-sm text-gray-600">Decode Conventional, FHA, VA, USDA</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-primary hover:bg-opacity-5 transition">
-                    <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-rocket text-primary text-xl"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-2">Confident Approach</h4>
-                        <p class="text-sm text-gray-600">Show up prepared, not guessing</p>
-                    </div>
-                </div>
+            <div class="feature-content">
+                <h3>Track your mortgage readiness in real-time</h3>
+                <p>See exactly where you stand with your personalized readiness score. Know when you're ready to make an offer—not when a lender tells you no.</p>
+                <p>Monitor credit improvements, document completion, and financial milestones all in one place.</p>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-24 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-black mb-6">Trusted by <span class="gradient-text">Future Homeowners</span></h2>
+    <!-- Solution Feature 3 -->
+    <section class="section">
+        <div class="features-grid">
+            <div class="feature-content">
+                <h3>Get your personalized approval roadmap</h3>
+                <p>No two homebuying journeys are identical. Your custom preparation plan shows exactly what you need to do—and when—to maximize approval chances.</p>
+                <p>From credit optimization to document checklists, FinyAlly guides you step-by-step toward your dream home.</p>
+            </div>
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2000" alt="Strategic planning and roadmap">
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" id="how-it-works" style="background: #f9fafb;">
+        <div class="section-header">
+            <h2>How FinyAlly Works</h2>
+            <p>Three simple steps to mortgage approval</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Take the Assessment</h3>
+                <p>Answer questions about your financial situation and homebuying goals. Get your personalized roadmap instantly.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Learn & Level Up</h3>
+                <p>Complete daily 15-minute lessons and quizzes. Track your progress as you build mortgage-ready skills.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Get Approved</h3>
+                <p>Apply with confidence knowing you've prepared like the top 1% of homebuyers. Watch your approval rate soar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <h2>Why FinyAlly Exists</h2>
+            <p>I spent 2 years struggling to buy a home despite having excellent credit, no debt, and significant savings. The problem wasn't my finances—it was that nobody taught me how underwriting actually works.</p>
+            <p>I watched qualified friends get denied for the same reason. We weren't unqualified. We were unprepared.</p>
+            <p>FinyAlly exists to change that—to give every millennial the knowledge and tools to navigate the homebuying process with confidence.</p>
+            
+            <div class="founder">
+                <p class="founder-name">Brooke Thomas</p>
+                <p class="founder-title">Founder, FinyAlly</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">T</div>
-                        <div class="ml-4">
-                            <div class="font-bold text-lg">Tasha W.</div>
-                            <div class="text-sm text-gray-500">Atlanta, GA</div>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed">"As a teacher, I thought buying was years away. FinyAlly showed me the 3% down option and helped me get all my documents together. I'm closing next month on my first home in Old Fourth Ward!"</p>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">D</div>
-                        <div class="ml-4">
-                            <div class="font-bold text-lg">DeAndre M.</div>
-                            <div class="text-sm text-gray-500">Detroit, MI</div>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed">"Running my own barbershop, I didn't know what lenders needed from self-employed buyers. FinyAlly's checklist made everything clear. Got approved in one week and found my spot in Midtown!"</p>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">L</div>
-                        <div class="ml-4">
-                            <div class="font-bold text-lg">Lupita S.</div>
-                            <div class="text-sm text-gray-500">Chattanooga, TN</div>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed">"My credit score was holding me back, but I didn't know how much it mattered. FinyAlly taught me how to improve it before applying. Six months later, I'm a homeowner in Northshore with a great rate!"</p>
-                </div>
+            <div class="about-cta">
+                <a href="https://finyally.flutterflow.app/" class="cta-primary">Begin Your Journey</a>
             </div>
         </div>
     </section>
 
     <!-- Final CTA -->
-    <section id="signup" class="py-24 bg-gradient-to-br from-primary to-primary-dark text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -ml-48 -mt-48"></div>
-            <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full -mr-48 -mb-48"></div>
-        </div>
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <h2 class="text-4xl lg:text-5xl font-black mb-6">Ready to Stop Guessing and Start Preparing?</h2>
-            <p class="text-xl mb-10 max-w-2xl mx-auto opacity-90">Join FinyAlly free today and take the first step toward confident, informed homeownership.</p>
-            <a href="https://finyally.flutterflow.app/" target="_blank" class="inline-block bg-white text-primary hover:bg-gray-100 px-12 py-5 rounded-xl text-lg font-bold transition shadow-2xl transform hover:scale-105">
-                Save and Start for Free <i class="fas fa-arrow-right ml-2"></i>
-            </a>
-            <div class="mt-10 flex flex-wrap justify-center gap-8">
-                <div class="flex items-center">
-                    <i class="fas fa-check-circle text-2xl mr-3"></i>
-                    <span class="font-medium">No credit card required</span>
-                </div>
-                <div class="flex items-center">
-                    <i class="fas fa-check-circle text-2xl mr-3"></i>
-                    <span class="font-medium">100% free education</span>
-                </div>
-                <div class="flex items-center">
-                    <i class="fas fa-check-circle text-2xl mr-3"></i>
-                    <span class="font-medium">Privacy protected</span>
-                </div>
-            </div>
-        </div>
+    <section class="cta-section">
+        <h2>Ready to Get Mortgage-Ready?</h2>
+        <p>Join 75+ millennials preparing for homeownership with FinyAlly</p>
+        <a href="https://finyally.flutterflow.app/" class="cta-secondary">Start Now</a>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-16">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div>
-                    <div class="text-2xl font-bold text-white mb-4 flex items-center">
-                        <span class="mr-2">🏡</span> FinyAlly
-                    </div>
-                    <p class="text-sm leading-relaxed">Empowering first-time homebuyers with the knowledge to succeed.</p>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">Product</h4>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="about.html" class="hover:text-primary transition">About Us</a></li>
-                        <li><a href="about.html#faq" class="hover:text-primary transition">FAQ</a></li>
-                        <li><a href="about.html#contact" class="hover:text-primary transition">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">Partners</h4>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="for-lenders.html" class="hover:text-primary transition">For Lenders</a></li>
-                        <li><a href="mailto:partners@finyally.tech" class="hover:text-primary transition">Partner Inquiry</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">Connect</h4>
-                    <div class="flex space-x-4 mb-4">
-                        <a href="https://www.instagram.com/finyally.tech/" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                    <a href="mailto:support@finyally.tech" class="text-sm hover:text-primary transition">support@finyally.tech</a>
-                </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://i.postimg.cc/L6qJNQXC/finyally-logo.png" alt="FinyAlly">
             </div>
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
-                <p>&copy; 2025 FinyAlly. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-primary transition">Privacy Policy</a>
-                    <a href="#" class="hover:text-primary transition">Terms of Service</a>
-                </div>
+            <div class="footer-links">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#about">About</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="copyright">
+                © 2024 FinyAlly. Your Key to Homeownership.
             </div>
         </div>
     </footer>
-
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
