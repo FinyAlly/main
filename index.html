@@ -1,767 +1,477 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinyAlly - Your Homebuying Study Guide</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
-            color: #1a1a1a;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #e5e7eb;
-            z-index: 1000;
-            padding: 20px 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 40px;
-            width: auto;
-            display: block;
-        }
-        
-        .logo-text {
-            font-size: 24px;
-            font-weight: 700;
-            color: #009620;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #4b5563;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #009620;
-        }
-
-        .nav-cta {
-            background: #009620;
-            color: white !important;
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 150, 32, 0.3);
-            color: white !important;
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            padding: 120px 40px 80px;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f9f4 100%);
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 68px;
-            font-weight: 700;
-            line-height: 1.15;
-            margin-bottom: 24px;
-            color: #111827;
-            letter-spacing: -0.03em;
-        }
-
-        .hero h1 .highlight {
-            color: #009620;
-            display: block;
-            margin-top: 8px;
-        }
-
-        .hero p {
-            font-size: 22px;
-            color: #6b7280;
-            margin-bottom: 40px;
-            line-height: 1.5;
-            font-weight: 400;
-        }
-
-        .cta-primary {
-            display: inline-block;
-            background: #009620;
-            color: white;
-            padding: 18px 48px;
-            border-radius: 8px;
-            font-size: 17px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 14px rgba(0, 150, 32, 0.3);
-        }
-
-        .cta-primary:hover {
-            background: #007a1a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 150, 32, 0.4);
-        }
-
-        .trust-bar {
-            display: flex;
-            justify-content: center;
-            gap: 80px;
-            margin-top: 80px;
-            padding-top: 60px;
-            border-top: 1px solid #e5e7eb;
-            flex-wrap: wrap;
-        }
-
-        .trust-item {
-            text-align: center;
-        }
-
-        .trust-number {
-            font-size: 36px;
-            font-weight: 700;
-            color: #111827;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .trust-label {
-            font-size: 15px;
-            color: #6b7280;
-            font-weight: 500;
-        }
-
-        /* Section Container */
-        .section {
-            padding: 120px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 80px;
-        }
-
-        .section-header h2 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #111827;
-            letter-spacing: -0.02em;
-        }
-
-        .section-header p {
-            font-size: 20px;
-            color: #6b7280;
-            line-height: 1.5;
-        }
-
-        /* Problem Section */
-        .problem-section {
-            background: #f9fafb;
-            padding: 120px 40px;
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .problem-card {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid #e5e7eb;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .problem-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
-            background: #009620;
-            transition: height 0.3s ease;
-        }
-
-        .problem-card:hover {
-            border-color: #009620;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 150, 32, 0.15);
-        }
-
-        .problem-card:hover::before {
-            height: 100%;
-        }
-
-        .problem-card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #111827;
-        }
-
-        .problem-card p {
-            font-size: 16px;
-            color: #6b7280;
-            line-height: 1.6;
-        }
-
-        /* Features Section */
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .feature-content h3 {
-            font-size: 40px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            color: #111827;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-        }
-
-        .feature-content p {
-            font-size: 18px;
-            color: #6b7280;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .feature-image {
-            width: 100%;
-            height: 500px;
-            background: linear-gradient(135deg, #f0f9f4 0%, #d1fae5 50%, #a7f3d0 100%);
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 4px 20px rgba(0, 150, 32, 0.1);
-        }
-
-        .feature-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Placeholder for images */
-        .placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #f0f9f4 0%, #d1fae5 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #047857;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        /* How It Works */
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 60px;
-            margin-top: 80px;
-        }
-
-        .step {
-            text-align: left;
-        }
-
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            background: #009620;
-            color: white;
-            border-radius: 8px;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 24px;
-        }
-
-        .step h3 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #111827;
-        }
-
-        .step p {
-            font-size: 16px;
-            color: #6b7280;
-            line-height: 1.6;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: #111827;
-            padding: 120px 40px;
-            text-align: center;
-            color: white;
-        }
-
-        .cta-section h2 {
-            font-size: 52px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
-        }
-
-        .cta-section p {
-            font-size: 20px;
-            margin-bottom: 40px;
-            color: #d1d5db;
-        }
-
-        .cta-secondary {
-            display: inline-block;
-            background: #009620;
-            color: white;
-            padding: 16px 40px;
-            border-radius: 8px;
-            font-size: 17px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .cta-secondary:hover {
-            background: #007a1a;
-            transform: translateY(-1px);
-        }
-
-        /* About Section */
-        .about-section {
-            background: white;
-            padding: 120px 40px;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-content h2 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 32px;
-            color: #009620;
-            letter-spacing: -0.02em;
-        }
-
-        .about-content p {
-            font-size: 20px;
-            color: #4b5563;
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .founder {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .founder-name {
-            font-size: 20px;
-            font-weight: 700;
-            color: #111827;
-            margin-bottom: 4px;
-        }
-
-        .founder-title {
-            font-size: 16px;
-            color: #6b7280;
-        }
-
-        .about-cta {
-            margin-top: 48px;
-        }
-
-        /* Footer */
-        footer {
-            background: #111827;
-            color: #9ca3af;
-            padding: 60px 40px 40px;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            margin-bottom: 32px;
-            display: flex;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
-            color: #009620;
-            letter-spacing: -0.5px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #9ca3af;
-            text-decoration: none;
-            transition: color 0.2s;
-            font-size: 15px;
-        }
-
-        .footer-links a:hover {
-            color: #009620;
-        }
-
-        .copyright {
-            font-size: 14px;
-            padding-top: 32px;
-            border-top: 1px solid #374151;
-            color: #6b7280;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .section-header h2 {
-                font-size: 36px;
-            }
-
-            .features-grid,
-            .problem-grid,
-            .steps {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .trust-bar {
-                gap: 40px;
-            }
-
-            .feature-image {
-                height: 400px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero {
-                padding: 80px 20px 60px;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-
-            .section {
-                padding: 80px 20px;
-            }
-
-            .cta-section,
-            .problem-section,
-            .about-section {
-                padding: 80px 20px;
-            }
-
-            .feature-content h3 {
-                font-size: 32px;
-            }
-        }
-    </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.65">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <span class="logo-text">FinyAlly</span>
-            </a>
-            <div class="nav-links">
-                <a href="#how-it-works">How It Works</a>
-                <a href="#about">About</a>
-                <a href="https://finyally.flutterflow.app/" class="nav-cta">Start Now</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>You wouldn't take a $300K test blind. <span class="highlight">FinyAlly is your study guide.</span></h1>
-            <p>The gamified platform that prepares millennial homebuyers for mortgage approval—in just 15 minutes a day.</p>
-            <a href="https://finyally.flutterflow.app/" class="cta-primary">Start Preparing Now</a>
-            
-            <div class="trust-bar">
-                <div class="trust-item">
-                    <span class="trust-number">85%</span>
-                    <span class="trust-label">Higher Approval Rate</span>
-                </div>
-                <div class="trust-item">
-                    <span class="trust-number">15 min</span>
-                    <span class="trust-label">Daily Learning</span>
-                </div>
-                <div class="trust-item">
-                    <span class="trust-number">75+</span>
-                    <span class="trust-label">Preparing Now</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Problem Section -->
-    <section class="problem-section">
-        <div class="section-header">
-            <h2>Why Qualified Millennials Get Denied</h2>
-            <p>It's not your credit score. It's not your savings. Here's what's really stopping you.</p>
-        </div>
-        <div class="problem-grid">
-            <div class="problem-card">
-                <h3>Don't Understand Underwriting</h3>
-                <p>You don't know what lenders actually look for beyond credit scores—and nobody teaches you.</p>
-            </div>
-            <div class="problem-card">
-                <h3>Missing Documentation</h3>
-                <p>Incomplete paperwork causes instant rejections or delays that kill your deal.</p>
-            </div>
-            <div class="problem-card">
-                <h3>Poor Timing</h3>
-                <p>You apply too early or too late, missing ideal conditions or making costly mistakes.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Feature 1 -->
-    <section class="section">
-        <div class="features-grid">
-            <div class="feature-content">
-                <h3>Master what underwriters actually evaluate</h3>
-                <p>Learn the real approval criteria through engaging quizzes designed for your schedule. No jargon. No confusion.</p>
-                <p>FinyAlly breaks down complex mortgage concepts into 15-minute lessons that stick—so you know exactly what lenders want before you apply.</p>
-            </div>
-            <div class="feature-image">
-                <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#f0f9f4;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#d1fae5;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#a7f3d0;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="800" height="600" fill="url(#grad1)"/>
-                    <rect x="100" y="150" width="600" height="300" rx="20" fill="white" opacity="0.9"/>
-                    <rect x="150" y="200" width="200" height="40" rx="8" fill="#009620" opacity="0.3"/>
-                    <rect x="150" y="260" width="300" height="40" rx="8" fill="#009620" opacity="0.3"/>
-                    <rect x="150" y="320" width="250" height="40" rx="8" fill="#009620" opacity="0.3"/>
-                    <circle cx="550" cy="300" r="80" fill="#009620" opacity="0.2"/>
-                    <path d="M 520 300 L 545 325 L 590 270" stroke="#009620" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Feature 2 -->
-    <section class="section" style="background: #f9fafb;">
-        <div class="features-grid">
-            <div class="feature-image">
-                <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#f0f9f4;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#d1fae5;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#a7f3d0;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="800" height="600" fill="url(#grad2)"/>
-                    <rect x="150" y="100" width="500" height="400" rx="20" fill="white" opacity="0.9"/>
-                    <rect x="200" y="150" width="400" height="60" rx="8" fill="#009620" opacity="0.2"/>
-                    <rect x="200" y="230" width="150" height="150" rx="12" fill="#009620" opacity="0.3"/>
-                    <rect x="370" y="230" width="230" height="70" rx="8" fill="#009620" opacity="0.25"/>
-                    <rect x="370" y="320" width="230" height="60" rx="8" fill="#009620" opacity="0.2"/>
-                    <circle cx="480" cy="460" r="30" fill="#009620" opacity="0.4"/>
-                </svg>
-            </div>
-            <div class="feature-content">
-                <h3>Track your mortgage readiness in real-time</h3>
-                <p>See exactly where you stand with your personalized readiness score. Know when you're ready to make an offer—not when a lender tells you no.</p>
-                <p>Monitor credit improvements, document completion, and financial milestones all in one place.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Feature 3 -->
-    <section class="section">
-        <div class="features-grid">
-            <div class="feature-content">
-                <h3>Get your personalized approval roadmap</h3>
-                <p>No two homebuying journeys are identical. Your custom preparation plan shows exactly what you need to do—and when—to maximize approval chances.</p>
-                <p>From credit optimization to document checklists, FinyAlly guides you step-by-step toward your dream home.</p>
-            </div>
-            <div class="feature-image">
-                <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#f0f9f4;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#d1fae5;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#a7f3d0;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="800" height="600" fill="url(#grad3)"/>
-                    <circle cx="250" cy="150" r="40" fill="#009620" opacity="0.3"/>
-                    <line x1="290" y1="150" x2="400" y2="250" stroke="#009620" stroke-width="4" opacity="0.4"/>
-                    <circle cx="400" cy="250" r="40" fill="#009620" opacity="0.3"/>
-                    <line x1="440" y1="250" x2="550" y2="350" stroke="#009620" stroke-width="4" opacity="0.4"/>
-                    <circle cx="550" cy="350" r="40" fill="#009620" opacity="0.3"/>
-                    <line x1="590" y1="350" x2="650" y2="450" stroke="#009620" stroke-width="4" opacity="0.4"/>
-                    <circle cx="650" cy="450" r="50" fill="#009620" opacity="0.5"/>
-                    <path d="M 630 450 L 645 470 L 680 430" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="section" id="how-it-works" style="background: #f9fafb;">
-        <div class="section-header">
-            <h2>How FinyAlly Works</h2>
-            <p>Three simple steps to mortgage approval</p>
-        </div>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>Take the Assessment</h3>
-                <p>Answer questions about your financial situation and homebuying goals. Get your personalized roadmap instantly.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>Learn & Level Up</h3>
-                <p>Complete daily 15-minute lessons and quizzes. Track your progress as you build mortgage-ready skills.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>Get Approved</h3>
-                <p>Apply with confidence knowing you've prepared like the top 1% of homebuyers. Watch your approval rate soar.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="about-content">
-            <h2>Why FinyAlly Exists</h2>
-            <p>I spent 2 years struggling to buy a home despite having excellent credit, no debt, and significant savings. The problem wasn't my finances—it was that nobody taught me how underwriting actually works.</p>
-            <p>I watched qualified friends get denied for the same reason. We weren't unqualified. We were unprepared.</p>
-            <p>FinyAlly exists to change that—to give every millennial the knowledge and tools to navigate the homebuying process with confidence.</p>
-            
-            <div class="founder">
-                <p class="founder-name">Brooke Thomas</p>
-                <p class="founder-title">Founder, FinyAlly</p>
-            </div>
-            
-            <div class="about-cta">
-                <a href="https://finyally.flutterflow.app/" class="cta-primary">Begin Your Journey</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="cta-section">
-        <h2>Ready to Get Mortgage-Ready?</h2>
-        <p>Join 75+ millennials preparing for homeownership with FinyAlly</p>
-        <a href="https://finyally.flutterflow.app/" class="cta-secondary">Start Now</a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">FinyAlly</div>
-            <div class="footer-links">
-                <a href="#how-it-works">How It Works</a>
-                <a href="#about">About</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-            <div class="copyright">
-                © 2025 FinyAlly. Your Key to Homeownership.
-            </div>
-        </div>
-    </footer>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;FinyAlly ZIP Download Helper&lt;/title&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button id="downloadZip"&gt;Download FinyAlly HTML as ZIP&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// The full HTML content for finyally_redesign.html:</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const htmlContent = `&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;FinyAlly - Your Homebuying Study Guide&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--primary: #635bff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--primary-light: #82aaff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--dark: #0a2540;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text-gray: #475569;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg-light: #f6f9fc;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--white: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>* { margin: 0; padding: 0; box-sizing: border-box; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--dark);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>-webkit-font-smoothing: antialiased;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>nav {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>top: 0; left: 0; width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255, 255, 255, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>backdrop-filter: blur(8px);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>z-index: 1000;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-container {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 1200px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 1rem 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.logo-text { font-size: 1.5rem; font-weight: 700; color: var(--primary); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-links { display: flex; align-items: center; gap: 2rem; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-links a {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-gray);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: color 0.2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-links a:hover { color: var(--primary); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-cta {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(90deg, var(--primary), var(--primary-light));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--white) !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.6rem 1.4rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: transform 0.2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-cta:hover { transform: translateY(-2px); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 6rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 160px 20px 120px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(ellipse at top right, #eef2ff 0%, #ffffff 70%);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-content { max-width: 900px; margin: 0 auto; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero h1 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 3.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.2;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--dark);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero p {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 680px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-gray);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cta-primary {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(90deg, var(--primary), var(--primary-light));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 1rem 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.1rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 10px 20px rgba(99, 91, 255, 0.2);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: transform 0.3s ease, box-shadow 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cta-primary:hover {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transform: translateY(-3px);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 12px 24px rgba(99, 91, 255, 0.25);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.trust-bar {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 4rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.trust-item { text-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.trust-number { font-size: 2rem; font-weight: 700; color: var(--dark); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.trust-label { font-size: 0.9rem; color: var(--text-gray); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.section {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 1200px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 120px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.section-header {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 720px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto 80px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.section-header h2 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--dark);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.section-header p { color: var(--text-gray); font-size: 1.1rem; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.problem-section { background: var(--bg-light); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.problem-grid {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.problem-card {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: transform 0.2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.problem-card:hover { transform: translateY(-4px); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.problem-card h3 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.3rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--dark);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.problem-card p { color: var(--text-gray); line-height: 1.6; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.features-grid {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 4rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feature-content h3 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--dark);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feature-content p {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.05rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-gray);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feature-image {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feature-image img {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.steps {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: left;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.step-number {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 48px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 48px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: var(--primary);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cta-section {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: var(--dark);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 120px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cta-section h2 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 2.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cta-section p {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #e5e7eb;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cta-secondary {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(90deg, var(--primary), var(--primary-light));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 1rem 2.4rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: transform 0.2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cta-secondary:hover { transform: translateY(-3px); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.about-section { background: var(--white); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.about-content {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 750px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.about-content h2 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--primary);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.about-content p {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-gray);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.05rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.7;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.founder {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-gray);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>footer {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: var(--dark);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #9ca3af;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 60px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-logo {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--primary-light);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.4rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-links {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 1rem 0 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-links a {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #9ca3af;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: color 0.2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-links a:hover { color: var(--primary-light); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.copyright {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px solid rgba(255, 255, 255, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding-top: 1.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.85rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 768px) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.hero h1 { font-size: 2.2rem; }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.cta-primary { width: 100%; }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.features-grid { grid-template-columns: 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Navigation --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="nav-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="logo-text"&gt;FinyAlly&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="nav-links"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#how-it-works"&gt;How It Works&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#about"&gt;About&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="https://finyally.flutterflow.app/" class="nav-cta"&gt;Start Now&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/nav&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Hero --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="hero"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="hero-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h1&gt;You wouldn’t take a $300K test blind.&lt;br /&gt;FinyAlly is your study guide.&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;The gamified platform preparing millennial homebuyers for mortgage approval — in just 15 minutes a day.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="https://finyally.flutterflow.app/" class="cta-primary"&gt;Start Preparing Now&lt;/a&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="trust-bar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="trust-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="trust-number"&gt;85%&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="trust-label"&gt;Higher Approval Rate&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="trust-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="trust-number"&gt;15 min&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="trust-label"&gt;Daily Learning&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="trust-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="trust-number"&gt;75+&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="trust-label"&gt;Preparing Now&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Problem Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="problem-section section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="section-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Why Qualified Millennials Get Denied&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;It’s not your credit score. It’s not your savings. Here’s what’s really stopping you.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="problem-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="problem-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Don’t Understand Underwriting&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Most buyers don’t know what lenders truly evaluate beyond credit — and it’s costing approvals.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="problem-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Missing Documentation&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Incomplete paperwork leads to instant rejections or long delays that end deals.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="problem-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Poor Timing&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Applying at the wrong time means missing ideal conditions or triggering unnecessary denials.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Feature 1 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="features-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="feature-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Master what underwriters actually evaluate&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Learn the real approval criteria through engaging micro-lessons and quizzes — free of jargon.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;FinyAlly simplifies complex mortgage concepts into 15-minute lessons that truly stick.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="feature-image"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;img src="https://images.unsplash.com/photo-1565372918672-7b235bfc210d?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Mortgage Learning" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Feature 2 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="section" style="background: var(--bg-light);"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="features-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="feature-image"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;img src="https://images.unsplash.com/photo-1607083207321-cf9b6c8e3568?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Mortgage Tracking" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="feature-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Track your mortgage readiness in real-time&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;See exactly where you stand with your personalized readiness score — no guessing, no confusion.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Monitor credit improvements, document completion, and your overall timeline in one dashboard.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Feature 3 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="features-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="feature-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Get your personalized approval roadmap&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Your homebuying journey is unique. FinyAlly’s preparation plan shows you exactly what to do — and when.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;From credit optimization to document checklists, you’ll move from uncertainty to approval with confidence.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="feature-image"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;img src="https://images.unsplash.com/photo-1607082349564-4f71b9df586b?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Roadmap Visualization" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- How It Works --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section id="how-it-works" class="section" style="background: var(--bg-light);"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="section-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;How FinyAlly Works&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;Three simple steps to mortgage approval&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="steps"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="step"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="step-number"&gt;1&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Take the Assessment&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Answer questions about your finances and goals to get your personalized readiness roadmap instantly.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="step"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="step-number"&gt;2&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Learn &amp; Level Up&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Complete daily 15-minute lessons and track your progress as your approval potential grows.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="step"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="step-number"&gt;3&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Apply with Confidence&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Submit your mortgage knowing you meet every criterion lenders value. Your preparation pays off.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- About --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section id="about" class="about-section section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="about-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Why FinyAlly Exists&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;After years struggling to buy a home despite great credit and savings, I realized the issue wasn’t financial — it was educational. Nobody teaches you how underwriting actually works.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;I watched friends face the same barriers. We weren’t unqualified — we were unprepared.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;FinyAlly exists to fix that — empowering every millennial to navigate homebuying with knowledge and confidence.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="founder"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;strong&gt;Brooke Thomas&lt;/strong&gt;&lt;br /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Founder, FinyAlly</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="https://finyally.flutterflow.app/" class="cta-primary" style="margin-top: 2rem; display:inline-block;"&gt;Begin Your Journey&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Final CTA --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="cta-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Ready to Get Mortgage-Ready?&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Join 75+ smart buyers preparing for homeownership with FinyAlly&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="https://finyally.flutterflow.app/" class="cta-secondary"&gt;Start Now&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Footer --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="footer-logo"&gt;FinyAlly&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="footer-links"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="#how-it-works"&gt;How It Works&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="#about"&gt;About&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="#"&gt;Privacy Policy&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="#"&gt;Terms of Service&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="copyright"&gt;© 2025 FinyAlly. Your Key to Homeownership.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/footer&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Minimal in-browser "zip" using Blob (single-file zip-like approach)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('downloadZip').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const blob = new Blob([htmlContent], { type: 'text/html' });</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const url = URL.createObjectURL(blob);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const a = document.createElement('a');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>a.href = url;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>a.download = 'finyally_redesign.html';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.body.appendChild(a);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>a.click();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>a.remove();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>URL.revokeObjectURL(url);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
 </body>
 </html>
