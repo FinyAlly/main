@@ -85,6 +85,7 @@
             text-align: center;
             padding-top: 120px;
             position: relative;
+            overflow: hidden;
         }
 
         .hero::before {
@@ -96,6 +97,18 @@
             width: 800px;
             height: 800px;
             background: radial-gradient(circle, rgba(176, 196, 222, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.03) 0%, transparent 70%);
+            clip-path: polygon(100% 0, 100% 100%, 0 0);
             pointer-events: none;
         }
 
@@ -180,6 +193,19 @@
         .testimonials {
             padding: 120px 0;
             background: rgba(176, 196, 222, 0.02);
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, rgba(192, 192, 192, 0.02) 0%, transparent 70%);
+            clip-path: polygon(0 100%, 100% 100%, 0 0);
+            pointer-events: none;
         }
 
         .section-header {
@@ -213,6 +239,20 @@
             padding: 50px 40px;
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(192, 192, 192, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.1), transparent);
+            opacity: 0;
+            z-index: -1;
         }
 
         .testimonial-text {
@@ -245,6 +285,18 @@
         .final-cta {
             padding: 140px 0 120px;
             text-align: center;
+            position: relative;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1000px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(192, 192, 192, 0.2), transparent);
         }
 
         .final-cta h2 {
