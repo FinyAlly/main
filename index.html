@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinyAlly - Confidence, Delivered</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,7 +14,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #000000;
             color: #E8E8E8;
             overflow-x: hidden;
@@ -88,28 +90,65 @@
             overflow: hidden;
         }
 
+        /* Digital Grid Background */
         .hero::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(176, 196, 222, 0.08) 0%, transparent 70%);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(176, 196, 222, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(176, 196, 222, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
             pointer-events: none;
+            opacity: 0.4;
         }
 
+        /* Floating Documents Effect */
         .hero::after {
             content: '';
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 600px;
-            height: 600px;
-            background: linear-gradient(135deg, rgba(192, 192, 192, 0.03) 0%, transparent 70%);
-            clip-path: polygon(100% 0, 100% 100%, 0 0);
+            top: 20%;
+            right: 10%;
+            width: 300px;
+            height: 400px;
+            background: 
+                linear-gradient(135deg, rgba(192, 192, 192, 0.04) 0%, transparent 60%),
+                linear-gradient(45deg, rgba(176, 196, 222, 0.03) 0%, transparent 50%);
+            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
             pointer-events: none;
+            transform: perspective(1000px) rotateY(-15deg);
+        }
+
+        /* Additional document layer */
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            bottom: 15%;
+            left: 5%;
+            width: 280px;
+            height: 360px;
+            background: 
+                linear-gradient(225deg, rgba(192, 192, 192, 0.03) 0%, transparent 60%);
+            clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 10% 100%);
+            pointer-events: none;
+            transform: perspective(1000px) rotateY(15deg);
+            z-index: 0;
+        }
+
+        /* Subtle data lines */
+        .hero-content::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: -10%;
+            width: 120%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(176, 196, 222, 0.1), transparent);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .hero-content {
@@ -401,7 +440,7 @@
         <div class="container hero-content">
             <div class="launch-badge">Limited Access — Spring 2026</div>
             <h1>Confidence, Delivered.</h1>
-            <p class="hero-subtext">The private platform for buyers who move with intention.</p>
+            <p class="hero-subtext">The private platform for Millennial buyers who move with intention.</p>
             
             <div class="hero-cta">
                 <a href="https://finyally.flutterflow.app/" class="cta-btn primary" target="_blank">Access Beta</a>
