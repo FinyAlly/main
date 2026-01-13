@@ -3,18 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinyAlly - Your Homebuying Study Guide</title>
+    <title>FinyAlly - Confidence, Delivered</title>
     <style>
-        :root {
-            --primary: #009620;
-            --primary-light: #00b827;
-            --dark: #0a2540;
-            --text-gray: #475569;
-            --bg-light: #f6f9fc;
-            --white: #ffffff;
-            --radius: 10px;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -22,658 +12,414 @@
         }
 
         body {
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--white);
-            color: var(--dark);
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            background: #000000;
+            color: #E8E8E8;
+            overflow-x: hidden;
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            font-weight: 400;
         }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            z-index: 1000;
-        }
-
-        .nav-container {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(192, 192, 192, 0.1);
+        }
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-gray);
+            font-size: 24px;
             font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
+            color: #C0C0C0;
+            letter-spacing: 1px;
         }
 
         .nav-cta {
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
-            color: var(--white) !important;
-            padding: 0.6rem 1.4rem;
-            border-radius: var(--radius);
-            font-weight: 600;
+            display: flex;
+            gap: 16px;
+        }
+
+        .cta-btn {
+            padding: 12px 28px;
+            background: transparent;
+            color: #C0C0C0;
+            border: 1px solid rgba(192, 192, 192, 0.3);
+            font-weight: 400;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            font-family: inherit;
             text-decoration: none;
-            transition: transform 0.2s ease;
+            display: inline-block;
         }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
+        .cta-btn.primary {
+            background: #C0C0C0;
+            color: #000000;
+            border: 1px solid #C0C0C0;
         }
 
-        /* Hero */
+        /* Hero Section */
         .hero {
-            margin-top: 6rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 160px 20px 120px;
-            background: radial-gradient(ellipse at top right, #f0f9f4 0%, #ffffff 70%);
+            padding-top: 120px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(176, 196, 222, 0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .hero-content {
+            position: relative;
+            z-index: 1;
             max-width: 900px;
-            margin: 0 auto;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1.2rem;
-        }
-
-        .hero h1 .highlight {
-            color: var(--primary);
-            display: block;
-            margin-top: 8px;
-        }
-
-        .hero p {
-            max-width: 680px;
-            margin: 0 auto 2.5rem;
-            font-size: 1.2rem;
-            color: var(--text-gray);
-        }
-
-        .cta-primary {
+        .launch-badge {
             display: inline-block;
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: var(--radius);
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 10px 20px rgba(0, 150, 32, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 6px 16px;
+            background: rgba(192, 192, 192, 0.05);
+            border: 1px solid rgba(192, 192, 192, 0.2);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 40px;
+            color: #B0C4DE;
         }
 
-        .cta-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 24px rgba(0, 150, 32, 0.25);
+        h1 {
+            font-size: 64px;
+            font-weight: 300;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: #FFFFFF;
         }
 
-        .trust-bar {
+        .hero-subtext {
+            font-size: 20px;
+            color: #B0C4DE;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .hero-cta {
             display: flex;
+            gap: 20px;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 4rem;
             flex-wrap: wrap;
+            margin-top: 50px;
         }
 
-        .trust-item {
+        .hero-cta .cta-btn {
+            padding: 16px 40px;
+            font-size: 15px;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 100px 0;
+            border-top: 1px solid rgba(192, 192, 192, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
             text-align: center;
         }
 
-        .trust-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--dark);
-            display: block;
-            margin-bottom: 8px;
+        .stat-item h3 {
+            font-size: 14px;
+            color: #C0C0C0;
+            margin-bottom: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .trust-label {
-            font-size: 0.9rem;
-            color: var(--text-gray);
+        .stat-item p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
         }
 
-        /* Section Layout */
-        .section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 120px 20px;
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 0;
+            background: rgba(176, 196, 222, 0.02);
         }
 
         .section-header {
             text-align: center;
-            max-width: 720px;
-            margin: 0 auto 80px;
+            margin-bottom: 80px;
         }
 
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1rem;
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 16px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            color: #FFFFFF;
         }
 
-        .section-header p {
-            color: var(--text-gray);
-            font-size: 1.1rem;
+        .section-subtitle {
+            font-size: 16px;
+            color: #B0C4DE;
+            font-weight: 300;
         }
 
-        /* Problem Cards */
-        .problem-section {
-            background: var(--bg-light);
-        }
-
-        .problem-grid {
+        .testimonial-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        .problem-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: var(--radius);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-            transition: transform 0.2s ease;
+        .testimonial {
+            padding: 50px 40px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(192, 192, 192, 0.1);
         }
 
-        .problem-card:hover {
-            transform: translateY(-4px);
+        .testimonial-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #E8E8E8;
+            margin-bottom: 30px;
+            font-style: italic;
+            font-weight: 300;
         }
 
-        .problem-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
+        .testimonial-author {
+            border-top: 1px solid rgba(192, 192, 192, 0.1);
+            padding-top: 20px;
         }
 
-        .problem-card p {
-            color: var(--text-gray);
-            line-height: 1.6;
+        .author-info h5 {
+            font-size: 13px;
+            margin-bottom: 0;
+            color: #999;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
-        /* Features */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            align-items: center;
-            gap: 4rem;
+        .author-info p {
+            display: none;
         }
 
-        .feature-content h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--dark);
+        /* Final CTA */
+        .final-cta {
+            padding: 140px 0 120px;
+            text-align: center;
         }
 
-        .feature-content p {
-            font-size: 1.05rem;
-            color: var(--text-gray);
-            margin-bottom: 1rem;
+        .final-cta h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 300;
+            color: #FFFFFF;
         }
 
-        .feature-image {
-            width: 100%;
-            height: 500px;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+        .final-cta-subtitle {
+            font-size: 18px;
+            color: #B0C4DE;
+            margin-bottom: 50px;
+            font-weight: 300;
         }
 
-        .feature-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            border-radius: var(--radius);
-        }
-
-        /* Steps */
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            text-align: left;
-        }
-
-        .step {
-            text-align: left;
-        }
-
-        .step-number {
-            width: 48px;
-            height: 48px;
-            background: var(--primary);
-            color: white;
-            font-weight: 700;
-            font-size: 20px;
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
             justify-content: center;
-            margin-bottom: 1rem;
+            flex-wrap: wrap;
         }
 
-        .step h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .step p {
-            font-size: 1rem;
-            color: var(--text-gray);
-            line-height: 1.6;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: var(--dark);
-            text-align: center;
-            padding: 120px 20px;
-            color: white;
-        }
-
-        .cta-section h2 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            color: #e5e7eb;
-            margin-bottom: 2rem;
-        }
-
-        .cta-secondary {
-            display: inline-block;
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 1rem 2.4rem;
-            border-radius: var(--radius);
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform 0.2s ease;
-        }
-
-        .cta-secondary:hover {
-            transform: translateY(-3px);
-        }
-
-        /* About */
-        .about-section {
-            background: var(--white);
-        }
-
-        .about-content {
-            max-width: 750px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-content h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .about-content p {
-            color: var(--text-gray);
-            font-size: 1.05rem;
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-
-        .founder {
-            margin-top: 2rem;
-            color: var(--text-gray);
-        }
-
-        .founder-name {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 4px;
-        }
-
-        .founder-title {
-            font-size: 1rem;
-            color: var(--text-gray);
-        }
-
-        .about-cta {
-            margin-top: 2rem;
+        .cta-buttons .cta-btn {
+            padding: 18px 50px;
+            font-size: 15px;
         }
 
         /* Footer */
         footer {
-            background: var(--dark);
-            color: #9ca3af;
-            padding: 60px 20px;
+            padding: 60px 0;
+            border-top: 1px solid rgba(192, 192, 192, 0.1);
             text-align: center;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            color: var(--primary-light);
-            font-weight: 700;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            margin: 1rem 0 2rem;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-
-        .footer-links a {
-            color: #9ca3af;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-light);
-        }
-
-        .copyright {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1.2rem;
-            font-size: 0.85rem;
+        footer p {
+            color: #444;
+            font-size: 13px;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
 
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .cta-primary {
-                width: 100%;
-            }
-
-            .features-grid {
+            .testimonial-grid {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .nav-links {
-                display: none;
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
             }
 
-            .feature-image {
-                height: 400px;
+            h1 {
+                font-size: 42px;
+            }
+            
+            .hero-subtext {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 32px;
             }
 
-            .section {
-                padding: 80px 20px;
+            .final-cta h2 {
+                font-size: 36px;
             }
 
-            .cta-section,
-            .problem-section,
-            .about-section {
-                padding: 80px 20px;
+            .nav-cta {
+                flex-direction: column;
+                gap: 10px;
             }
 
-            .feature-content h3 {
-                font-size: 1.5rem;
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <span class="logo-text">FinyAlly</span>
-            </a>
-            <div class="nav-links">
-                <a href="#how-it-works">How It Works</a>
-                <a href="#about">About</a>
-                <a href="https://finyally.flutterflow.app/" class="nav-cta">Start Now</a>
+    <header>
+        <nav class="container">
+            <div class="logo">FinyAlly</div>
+            <div class="nav-cta">
+                <a href="https://finyally.flutterflow.app/" class="cta-btn" target="_blank">Access Beta</a>
+                <a href="https://forms.gle/enukbRA3nY3nQN5X7" class="cta-btn primary" target="_blank">Join Waitlist</a>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Buying a home is expensive. Making mistakes? Frustrating. <span class="highlight">Preparation? Priceless with FinyAlly.</span></h1>
-            <p>The platform that prepares Millennial homebuyers to close on their dream home.</p>
-            <a href="https://finyally.flutterflow.app/" class="cta-primary">Start Preparing Now</a>
-        </div>
-    </section>
-
-    <!-- Problem Section -->
-    <section class="problem-section">
-        <div class="section-header">
-            <h2>Why Qualified Millennials Get Denied</h2>
-            <p>It's not your credit score. It's not your savings. Here's what's really stopping you.</p>
-        </div>
-        <div class="problem-grid">
-            <div class="problem-card">
-                <h3>Don't Understand Underwriting</h3>
-                <p>You don't know what lenders actually look for beyond credit scores—and nobody teaches you.</p>
-            </div>
-            <div class="problem-card">
-                <h3>Missing Documentation</h3>
-                <p>Incomplete paperwork causes instant rejections or delays that kill your deal.</p>
-            </div>
-            <div class="problem-card">
-                <h3>Poor Timing</h3>
-                <p>You apply too early or too late, missing ideal conditions or making costly mistakes.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Feature 1 -->
-    <section class="section">
-        <div class="features-grid">
-            <div class="feature-content">
-                <h3>Master what underwriters actually evaluate</h3>
-                <p>Learn the real approval criteria through engaging quizzes designed for your schedule. No jargon. No confusion.</p>
-                <p>FinyAlly breaks down complex mortgage concepts into 15-minute lessons that stick—so you know exactly what lenders want before you apply.</p>
-            </div>
-            <div class="feature-image">
-                <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#f0f9f4;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#d1fae5;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#a7f3d0;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="800" height="600" fill="url(#grad1)"/>
-                    <rect x="100" y="150" width="600" height="300" rx="20" fill="white" opacity="0.9"/>
-                    <rect x="150" y="200" width="200" height="40" rx="8" fill="#009620" opacity="0.3"/>
-                    <rect x="150" y="260" width="300" height="40" rx="8" fill="#009620" opacity="0.3"/>
-                    <rect x="150" y="320" width="250" height="40" rx="8" fill="#009620" opacity="0.3"/>
-                    <circle cx="550" cy="300" r="80" fill="#009620" opacity="0.2"/>
-                    <path d="M 520 300 L 545 325 L 590 270" stroke="#009620" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Feature 2 -->
-    <section class="section" style="background: #f9fafb;">
-        <div class="features-grid">
-            <div class="feature-image">
-                <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#f0f9f4;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#d1fae5;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#a7f3d0;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="800" height="600" fill="url(#grad2)"/>
-                    <rect x="150" y="100" width="500" height="400" rx="20" fill="white" opacity="0.9"/>
-                    <rect x="200" y="150" width="400" height="60" rx="8" fill="#009620" opacity="0.2"/>
-                    <rect x="200" y="230" width="150" height="150" rx="12" fill="#009620" opacity="0.3"/>
-                    <rect x="370" y="230" width="230" height="70" rx="8" fill="#009620" opacity="0.25"/>
-                    <rect x="370" y="320" width="230" height="60" rx="8" fill="#009620" opacity="0.2"/>
-                    <circle cx="480" cy="460" r="30" fill="#009620" opacity="0.4"/>
-                </svg>
-            </div>
-            <div class="feature-content">
-                <h3>Track your mortgage readiness in real-time</h3>
-                <p>See exactly where you stand with your personalized readiness score. Know when you're ready to make an offer—not when a lender tells you no.</p>
-                <p>Monitor credit improvements, document completion, and financial milestones all in one place.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Feature 3 -->
-    <section class="section">
-        <div class="features-grid">
-            <div class="feature-content">
-                <h3>Get your personalized approval roadmap</h3>
-                <p>No two homebuying journeys are identical. Your custom preparation plan shows exactly what you need to do—and when—to maximize approval chances.</p>
-                <p>From credit optimization to document checklists, FinyAlly guides you step-by-step toward your dream home.</p>
-            </div>
-            <div class="feature-image">
-                <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#f0f9f4;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#d1fae5;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#a7f3d0;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="800" height="600" fill="url(#grad3)"/>
-                    <circle cx="250" cy="150" r="40" fill="#009620" opacity="0.3"/>
-                    <line x1="290" y1="150" x2="400" y2="250" stroke="#009620" stroke-width="4" opacity="0.4"/>
-                    <circle cx="400" cy="250" r="40" fill="#009620" opacity="0.3"/>
-                    <line x1="440" y1="250" x2="550" y2="350" stroke="#009620" stroke-width="4" opacity="0.4"/>
-                    <circle cx="550" cy="350" r="40" fill="#009620" opacity="0.3"/>
-                    <line x1="590" y1="350" x2="650" y2="450" stroke="#009620" stroke-width="4" opacity="0.4"/>
-                    <circle cx="650" cy="450" r="50" fill="#009620" opacity="0.5"/>
-                    <path d="M 630 450 L 645 470 L 680 430" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="section" id="how-it-works" style="background: #f9fafb;">
-        <div class="section-header">
-            <h2>How FinyAlly Works</h2>
-            <p>Three simple steps to mortgage approval</p>
-        </div>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>Take the Assessment</h3>
-                <p>Answer questions about your financial situation and homebuying goals. Get your personalized roadmap instantly.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>Learn & Level Up</h3>
-                <p>Complete daily 15-minute lessons and quizzes. Track your progress as you build mortgage-ready skills.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>Get Approved</h3>
-                <p>Apply with confidence knowing you've prepared like the top 1% of homebuyers. Watch your approval rate soar.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="about-content">
-            <h2>Why FinyAlly Exists</h2>
-            <p>I spent 2 years struggling to buy a home despite having excellent credit, no debt, and significant savings. The problem wasn't my finances—it was that nobody taught me how underwriting actually works.</p>
-            <p>I watched qualified friends get denied for the same reason. We weren't unqualified. We were unprepared.</p>
-            <p>FinyAlly exists to change that—to give every millennial the knowledge and tools to navigate the homebuying process with confidence.</p>
+        <div class="container hero-content">
+            <div class="launch-badge">Limited Access — Spring 2026</div>
+            <h1>Confidence, Delivered.</h1>
+            <p class="hero-subtext">The private platform for buyers who move with intention.</p>
             
-            <div class="founder">
-                <p class="founder-name">Brooke Thomas</p>
-                <p class="founder-title">Founder, FinyAlly</p>
+            <div class="hero-cta">
+                <a href="https://finyally.flutterflow.app/" class="cta-btn primary" target="_blank">Access Beta</a>
+                <a href="https://forms.gle/enukbRA3nY3nQN5X7" class="cta-btn" target="_blank">Join Waitlist</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>Selective</h3>
+                    <p>Built for those who prepare, not those who hope</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Uncompromising</h3>
+                    <p>Every detail of homebuying, mastered before you move</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Discreet</h3>
+                    <p>Your wealth strategy, protected and elevated</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Early Access</h2>
+                <p class="section-subtitle">Select members speak.</p>
             </div>
             
-            <div class="about-cta">
-                <a href="https://finyally.flutterflow.app/" class="cta-primary">Begin Your Journey</a>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"FinyAlly broke down the impossible. I negotiated confidently and found mistakes in my lender's worksheet."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h5>— M.K.</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Three weeks past closing, I still use it. The knowledge made me feel like I had an expert in my pocket."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h5>— J.L.</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="cta-section">
-        <h2>Ready to Get Mortgage-Ready?</h2>
-        <p>Join a community of millennials turning homeownership dreams into reality with FinyAlly.</p>
-        <a href="https://finyally.flutterflow.app/" class="cta-secondary">Start Now</a>
+    <section class="final-cta">
+        <div class="container">
+            <h2>One decision. Complete access. Elite preparation.</h2>
+            <p class="final-cta-subtitle">Early access available now. Limited memberships Spring 2026.</p>
+            
+            <div class="cta-buttons">
+                <a href="https://finyally.flutterflow.app/" class="cta-btn primary" target="_blank">Access Beta Platform</a>
+                <a href="https://forms.gle/enukbRA3nY3nQN5X7" class="cta-btn" target="_blank">Join Launch Waitlist</a>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-logo">FinyAlly</div>
-            <div class="footer-links">
-                <a href="#how-it-works">How It Works</a>
-                <a href="#about">About</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-            <div class="copyright">
-                © 2025 FinyAlly. Your Key to Homeownership.
-            </div>
+        <div class="container">
+            <p>&copy; 2026 FinyAlly. Confidence, delivered.</p>
         </div>
     </footer>
 </body>
