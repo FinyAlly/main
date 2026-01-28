@@ -1,4 +1,32 @@
-<!DOCTYPE html>
+    <script>
+        // Animated bar charts on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const vizNumber = entry.target.closest('.data-viz');
+                    const bars = vizNumber.querySelectorAll('.bar-fill');
+                    bars.forEach((bar, index) => {
+                        setTimeout(() => {
+                            bar.classList.add('animate');
+                        }, index * 200);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const dataVizSections = document.querySelectorAll('.data-viz');
+            dataVizSections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -204,6 +232,95 @@
         .stats {
             padding: 100px 0;
             border-top: 1px solid rgba(192, 192, 192, 0.1);
+        }
+
+        .stats-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .stats-intro h2 {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 16px;
+            color: #FFFFFF;
+        }
+
+        .stats-intro p {
+            font-size: 16px;
+            color: #B0C4DE;
+            font-weight: 300;
+        }
+
+        /* Data Visualization */
+        .data-viz {
+            max-width: 900px;
+            margin: 0 auto 80px;
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(192, 192, 192, 0.1);
+        }
+
+        .data-viz-title {
+            font-size: 18px;
+            color: #C0C0C0;
+            margin-bottom: 30px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bar-label {
+            min-width: 140px;
+            font-size: 14px;
+            color: #E8E8E8;
+        }
+
+        .bar-container {
+            flex: 1;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(192, 192, 192, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, rgba(176, 196, 222, 0.6), rgba(192, 192, 192, 0.4));
+            width: 0;
+            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bar-fill.animate {
+            width: var(--bar-width);
+        }
+
+        .bar-value {
+            min-width: 50px;
+            text-align: right;
+            font-size: 14px;
+            color: #B0C4DE;
+            font-weight: 500;
+        }
+
+        .data-source {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 11px;
+            color: #666;
+            font-style: italic;
         }
 
         .stats-grid {
@@ -440,7 +557,7 @@
         <div class="container hero-content">
             <div class="launch-badge">Limited Access — Spring 2026</div>
             <h1>Confidence, Delivered.</h1>
-            <p class="hero-subtext">The private platform for Millennial buyers who move with intention.</p>
+            <p class="hero-subtext">The private platform for Next Generation homebuyers who move with intention.</p>
             
             <div class="hero-cta">
                 <a href="https://finyally.flutterflow.app/" class="cta-btn primary" target="_blank">Access Beta</a>
@@ -451,6 +568,91 @@
 
     <section class="stats">
         <div class="container">
+            <div class="stats-intro">
+                <h2>The Reality Today</h2>
+                <p>Next Generation buyers face unprecedented challenges. The data tells the story.</p>
+            </div>
+
+            <!-- Data Visualization 1: Homeownership at Age 30 -->
+            <div class="data-viz">
+                <div class="data-viz-title">Homeownership Rate at Age 30</div>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label">Baby Boomers</div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="--bar-width: 52%;" data-viz="1"></div>
+                        </div>
+                        <div class="bar-value">52%</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">Gen X</div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="--bar-width: 49%;" data-viz="1"></div>
+                        </div>
+                        <div class="bar-value">49%</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">Millennials</div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="--bar-width: 43%;" data-viz="1"></div>
+                        </div>
+                        <div class="bar-value">43%</div>
+                    </div>
+                </div>
+                <div class="data-source">Source: RealPage Analytics, 2022</div>
+            </div>
+
+            <!-- Data Visualization 2: Homeownership at Age 35 -->
+            <div class="data-viz">
+                <div class="data-viz-title">Homeownership Rate at Age 35</div>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label">Baby Boomers</div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="--bar-width: 60%;" data-viz="2"></div>
+                        </div>
+                        <div class="bar-value">60%</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">Gen X</div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="--bar-width: 60%;" data-viz="2"></div>
+                        </div>
+                        <div class="bar-value">60%</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">Millennials</div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="--bar-width: 53%;" data-viz="2"></div>
+                        </div>
+                        <div class="bar-value">53%</div>
+                    </div>
+                </div>
+                <div class="data-source">Source: Urban Institute, 2024</div>
+            </div>
+
+            <!-- Data Visualization 3: Gen Z Sentiment -->
+            <div class="data-viz">
+                <div class="data-viz-title">Gen Z: "I'm Priced Out of Homeownership"</div>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label">Agree</div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="--bar-width: 79%;" data-viz="3"></div>
+                        </div>
+                        <div class="bar-value">79%</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">Disagree</div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="--bar-width: 21%;" data-viz="3"></div>
+                        </div>
+                        <div class="bar-value">21%</div>
+                    </div>
+                </div>
+                <div class="data-source">Source: Clever Offers Survey, 2025</div>
+            </div>
+
             <div class="stats-grid">
                 <div class="stat-item">
                     <h3>Selective</h3>
